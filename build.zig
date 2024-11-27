@@ -74,7 +74,7 @@ pub fn build(b: *Build) void {
         .target = target,
         .optimize = optimize,
     });
-    c_headers.addIncludeDir(lib.getEmittedIncludeTree().getDisplayName());
+    c_headers.addIncludeDir(b.getInstallPath(install_lib.h_dir.?, ""));
     c_headers.step.dependOn(&install_lib.step);
 
     const ziglua_c = b.addModule("ziglua-c", .{
